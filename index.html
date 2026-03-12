@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas AI - Your Personal AI Assistant on Telegram</title>
+    <meta name="description" content="Atlas AI - The most powerful free AI assistant on Telegram. 27+ tools, 2-second responses, image generation, voice messages, crypto tracking, and more.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #6C3CE1;
+            --primary-dark: #5229BD;
+            --accent: #00D4AA;
+            --dark: #0A0A1A;
+            --darker: #060612;
+            --card: #12122A;
+            --text: #E8E8F0;
+            --muted: #8888AA;
+            --glow: rgba(108, 60, 225, 0.3);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(6, 6, 18, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(108, 60, 225, 0.15);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span { font-weight: 400; opacity: 0.7; }
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text); }
+        
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: rgba(108, 60, 225, 0.15);
+            border: 1px solid rgba(108, 60, 225, 0.3);
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            font-weight: 800;
+            line-height: 1.05;
+            max-width: 900px;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+        
+        h1 .gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #8B5CF6);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 17px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--glow); }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--primary); background: rgba(108, 60, 225, 0.1); }
+        
+        /* STATS BAR */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 60px 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+        
+        /* SECTIONS */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-label {
+            font-size: 13px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .section-desc {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+        
+        /* SPEED SECTION */
+        .speed-compare {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .speed-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .speed-card.atlas {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(0, 212, 170, 0.1);
+        }
+        
+        .speed-card .name {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        
+        .speed-card .time {
+            font-size: 42px;
+            font-weight: 800;
+        }
+        
+        .speed-card.atlas .time {
+            background: linear-gradient(135deg, var(--accent), #00FFD0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .speed-card .unit {
+            font-size: 14px;
+            color: var(--muted);
+        }
+        
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(108, 60, 225, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .feature-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 12px;
+        }
+        
+        .tag-free { background: rgba(0, 212, 170, 0.15); color: var(--accent); }
+        .tag-ai { background: rgba(108, 60, 225, 0.15); color: #A78BFA; }
+        .tag-new { background: rgba(255, 170, 0, 0.15); color: #FFAA00; }
+        
+        /* TOOLS SECTION */
+        .tools-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        .tool-item .emoji { font-size: 24px; }
+        .tool-item .name { font-weight: 600; font-size: 15px; }
+        
+        /* COMPARISON TABLE */
+        .comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+        
+        .comparison th, .comparison td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .comparison th {
+            font-size: 13px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        
+        .comparison td { font-size: 15px; }
+        
+        .comparison .atlas-col {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .comparison .check { color: var(--accent); }
+        .comparison .cross { color: #FF4466; opacity: 0.5; }
+        
+        /* PRICING */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .price-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+        }
+        
+        .price-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 0 60px var(--glow);
+        }
+        
+        .price-card .tier {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        
+        .price-card .price {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .price-card.featured .price {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .price-card .period {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        
+        .price-card li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .price-card li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* TESTIMONIALS */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .testimonial {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .testimonial .stars { color: #FFD700; margin-bottom: 16px; font-size: 18px; }
+        .testimonial .quote { font-size: 16px; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+        .testimonial .author { font-weight: 600; font-size: 14px; }
+        .testimonial .role { color: var(--muted); font-size: 13px; }
+        
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        /* FOOTER */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        footer a { color: var(--accent); text-decoration: none; }
+        
+        /* FAQ */
+        .faq-item {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+            cursor: pointer;
+        }
+        
+        .faq-item summary {
+            font-weight: 600;
+            font-size: 17px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-item summary::after { content: '+'; font-size: 24px; color: var(--muted); }
+        .faq-item[open] summary::after { content: '-'; }
+        .faq-item p { color: var(--muted); margin-top: 16px; font-size: 15px; line-height: 1.7; }
+        
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .stats { gap: 30px; }
+            .stat-number { font-size: 36px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .tools-list { grid-template-columns: 1fr; }
+            .comparison { font-size: 13px; }
+            .comparison th, .comparison td { padding: 10px 12px; }
+            .pricing-cards { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">ATLAS <span>AI</span></div>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#tools">Tools</a>
+        <a href="#compare">Compare</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#start" class="nav-cta">Get Atlas</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="badge">
+        <span class="dot"></span>
+        27+ Built-in Tools - All Free
+    </div>
+    <h1>Your AI Assistant<br>That <span class="gradient">Actually Works</span></h1>
+    <p>Atlas lives in your Telegram. It remembers you, generates images, tracks crypto, reads PDFs, manages your tasks - and responds in under 2 seconds. No subscriptions. No limits.</p>
+    <div class="hero-buttons">
+        <a href="#start" class="btn-primary">⚡ Start Using Atlas</a>
+        <a href="#features" class="btn-secondary">See What It Can Do</a>
+    </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat">
+        <div class="stat-number">2s</div>
+        <div class="stat-label">Response Time</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">27+</div>
+        <div class="stat-label">Built-in Tools</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">$0</div>
+        <div class="stat-label">Monthly Cost</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Always Available</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">128K</div>
+        <div class="stat-label">Context Window</div>
+    </div>
+</div>
+
+<!-- SPEED SECTION -->
+<section id="speed">
+    <div class="section-label">Lightning Fast</div>
+    <h2>Faster than ChatGPT. Seriously.</h2>
+    <p class="section-desc">While other AI assistants make you wait 10-30 seconds, Atlas responds in under 2 seconds. Every time.</p>
+    <div class="speed-compare">
+        <div class="speed-card">
+            <div class="name">ChatGPT</div>
+            <div class="time">8-15s</div>
+            <div class="unit">average response</div>
+        </div>
+        <div class="speed-card">
+            <div class="name">Claude</div>
+            <div class="time">5-12s</div>
+            <div class="unit">average response</div>
+        </div>
+        <div class="speed-card">
+            <div class="name">Gemini</div>
+            <div class="time">3-8s</div>
+            <div class="unit">average response</div>
+        </div>
+        <div class="speed-card atlas">
+            <div class="name">Atlas AI</div>
+            <div class="time">1-2s</div>
+            <div class="unit">average response</div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+    <div class="section-label">Features</div>
+    <h2>Everything you need. Nothing you don't.</h2>
+    <p class="section-desc">Atlas isn't just a chatbot. It's a full productivity suite that lives in your Telegram.</p>
+    
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Persistent Memory</h3>
+            <p>Atlas remembers your name, preferences, past conversations, and context. It gets smarter the more you use it. No other Telegram bot does this.</p>
+            <span class="feature-tag tag-ai">AI-Powered</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Image Generation</h3>
+            <p>Generate stunning AI images from text prompts. "Create a logo for my company" - and Atlas delivers it right in chat. Unlimited. Free.</p>
+            <span class="feature-tag tag-free">Free</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🎤</div>
+            <h3>Voice Messages</h3>
+            <p>Atlas can speak to you. Get voice replies in 50+ languages as native Telegram voice bubbles. Perfect for hands-free use.</p>
+            <span class="feature-tag tag-free">Free</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Live Crypto Prices</h3>
+            <p>Real-time prices for Bitcoin, Ethereum, Solana, and 1000+ coins. Set price alerts and get notified when your targets hit.</p>
+            <span class="feature-tag tag-free">Free</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3>Web Browsing</h3>
+            <p>Atlas has a full Chrome browser. It can browse any website, fill forms, take screenshots, and research topics for you in real-time.</p>
+            <span class="feature-tag tag-ai">AI-Powered</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📄</div>
+            <h3>PDF Tools</h3>
+            <p>Read any PDF and ask questions about it. Convert text files and images to PDF. Extract and summarize documents instantly.</p>
+            <span class="feature-tag tag-free">Free</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">⏰</div>
+            <h3>Smart Reminders</h3>
+            <p>"Remind me to call mom at 6pm" - Atlas handles it. Recurring reminders, one-time alerts, timezone-aware. Never forget anything again.</p>
+            <span class="feature-tag tag-ai">AI-Powered</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📰</div>
+            <h3>News Headlines</h3>
+            <p>Get the latest news in world, tech, business, or sports. Summarized and delivered instantly. Stay informed without doomscrolling.</p>
+            <span class="feature-tag tag-free">Free</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">💸</div>
+            <h3>Expense Tracker</h3>
+            <p>"Spent 50 on groceries" - Atlas logs it. "What did I spend this month?" - instant breakdown by category. Your pocket accountant.</p>
+            <span class="feature-tag tag-new">New</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>To-Do Lists & Notes</h3>
+            <p>Add tasks, check them off, search your notes. Everything organized and always available right in your chat.</p>
+            <span class="feature-tag tag-free">Free</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Translation + Voice</h3>
+            <p>Translate any text between 50+ languages. Then hear it spoken aloud. Perfect for travel, learning, or communication.</p>
+            <span class="feature-tag tag-ai">AI-Powered</span>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>100% Private</h3>
+            <p>Your data never leaves your server. No cloud storage, no third-party access, no data mining. Atlas is yours and yours alone.</p>
+            <span class="feature-tag tag-free">Private</span>
+        </div>
+    </div>
+</section>
+
+<!-- ALL TOOLS -->
+<section id="tools">
+    <div class="section-label">27+ Tools</div>
+    <h2>One bot. Every tool you need.</h2>
+    <p class="section-desc">Stop switching between apps. Atlas has it all built in.</p>
+    
+    <div class="tools-list">
+        <div class="tool-item"><span class="emoji">🎨</span><span class="name">Image Generation</span></div>
+        <div class="tool-item"><span class="emoji">🎤</span><span class="name">Voice Messages (50+ languages)</span></div>
+        <div class="tool-item"><span class="emoji">💰</span><span class="name">Crypto Price Tracker</span></div>
+        <div class="tool-item"><span class="emoji">📄</span><span class="name">PDF Reader</span></div>
+        <div class="tool-item"><span class="emoji">📝</span><span class="name">Text/Image to PDF</span></div>
+        <div class="tool-item"><span class="emoji">💸</span><span class="name">Expense Tracker</span></div>
+        <div class="tool-item"><span class="emoji">📋</span><span class="name">To-Do Lists</span></div>
+        <div class="tool-item"><span class="emoji">📓</span><span class="name">Notes + Search</span></div>
+        <div class="tool-item"><span class="emoji">🔑</span><span class="name">Password Generator</span></div>
+        <div class="tool-item"><span class="emoji">📱</span><span class="name">QR Code Generator</span></div>
+        <div class="tool-item"><span class="emoji">📰</span><span class="name">News Headlines</span></div>
+        <div class="tool-item"><span class="emoji">💬</span><span class="name">Motivational Quotes</span></div>
+        <div class="tool-item"><span class="emoji">😂</span><span class="name">Jokes</span></div>
+        <div class="tool-item"><span class="emoji">💱</span><span class="name">Currency Converter</span></div>
+        <div class="tool-item"><span class="emoji">🌡</span><span class="name">Unit Converter</span></div>
+        <div class="tool-item"><span class="emoji">🌐</span><span class="name">Chrome Browser</span></div>
+        <div class="tool-item"><span class="emoji">🔍</span><span class="name">Web Search</span></div>
+        <div class="tool-item"><span class="emoji">📎</span><span class="name">URL Summarizer</span></div>
+        <div class="tool-item"><span class="emoji">☔</span><span class="name">Weather Forecasts</span></div>
+        <div class="tool-item"><span class="emoji">⏰</span><span class="name">Smart Reminders</span></div>
+        <div class="tool-item"><span class="emoji">🌍</span><span class="name">50+ Language Translation</span></div>
+        <div class="tool-item"><span class="emoji">🧠</span><span class="name">Persistent Memory</span></div>
+        <div class="tool-item"><span class="emoji">📊</span><span class="name">Daily Briefings</span></div>
+        <div class="tool-item"><span class="emoji">🤖</span><span class="name">Sub-Agent Workers</span></div>
+        <div class="tool-item"><span class="emoji">🔄</span><span class="name">Auto Updates</span></div>
+        <div class="tool-item"><span class="emoji">📸</span><span class="name">Screenshot Capture</span></div>
+        <div class="tool-item"><span class="emoji">🧮</span><span class="name">Advanced Calculator</span></div>
+    </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+    <div class="section-label">Why Atlas</div>
+    <h2>Atlas vs. The Competition</h2>
+    <p class="section-desc">See why Atlas outperforms bots costing 10x more.</p>
+    
+    <table class="comparison">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>ChatGPT</th>
+                <th>Claude</th>
+                <th>Gemini</th>
+                <th class="atlas-col">Atlas AI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Response Time</td>
+                <td>8-15s</td>
+                <td>5-12s</td>
+                <td>3-8s</td>
+                <td class="atlas-col">1-2s</td>
+            </tr>
+            <tr>
+                <td>Persistent Memory</td>
+                <td class="cross">Limited</td>
+                <td class="cross">Per session</td>
+                <td class="cross">Limited</td>
+                <td class="check">✓ Permanent</td>
+            </tr>
+            <tr>
+                <td>Image Generation</td>
+                <td class="check">✓ Paid</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ Paid</td>
+                <td class="check">✓ Free</td>
+            </tr>
+            <tr>
+                <td>Voice Messages</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ 50+ langs</td>
+            </tr>
+            <tr>
+                <td>Crypto Tracking</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ Real-time</td>
+            </tr>
+            <tr>
+                <td>Web Browsing</td>
+                <td class="check">✓ Paid</td>
+                <td class="cross">✗</td>
+                <td class="check">✓</td>
+                <td class="check">✓ Full Chrome</td>
+            </tr>
+            <tr>
+                <td>PDF Tools</td>
+                <td class="check">✓ Paid</td>
+                <td class="check">✓ Paid</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ Free</td>
+            </tr>
+            <tr>
+                <td>Expense Tracking</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ Built-in</td>
+            </tr>
+            <tr>
+                <td>Smart Reminders</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ Cron-based</td>
+            </tr>
+            <tr>
+                <td>Privacy</td>
+                <td class="cross">Cloud</td>
+                <td class="cross">Cloud</td>
+                <td class="cross">Cloud</td>
+                <td class="check">✓ Your server</td>
+            </tr>
+            <tr>
+                <td>Monthly Cost</td>
+                <td>$20/mo</td>
+                <td>$20/mo</td>
+                <td>$20/mo</td>
+                <td class="atlas-col">$0 - $9.99</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+    <div class="section-label">Simple Setup</div>
+    <h2>Up and running in 3 steps</h2>
+    <p class="section-desc">No apps to download. No accounts to create. Just Telegram.</p>
+    
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">1️⃣</div>
+            <h3>Open Telegram</h3>
+            <p>You already have it. Atlas lives right where you chat every day. No new apps, no context switching.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">2️⃣</div>
+            <h3>Start the Bot</h3>
+            <p>Search for your Atlas bot and hit Start. That's it. Atlas introduces itself and learns who you are.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">3️⃣</div>
+            <h3>Just Talk</h3>
+            <p>Ask anything. Generate images. Track expenses. Set reminders. Atlas handles everything through natural conversation.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2>Simple, transparent pricing</h2>
+    <p class="section-desc">Start free. Upgrade when you're ready.</p>
+    
+    <div class="pricing-cards">
+        <div class="price-card">
+            <div class="tier">Starter</div>
+            <div class="price">Free</div>
+            <div class="period">forever</div>
+            <ul>
+                <li>All 27+ tools included</li>
+                <li>2-second response time</li>
+                <li>Persistent memory</li>
+                <li>Image generation</li>
+                <li>Voice messages</li>
+                <li>Community support</li>
+            </ul>
+            <a href="#start" class="btn-primary" style="width:100%;justify-content:center;">Get Started Free</a>
+        </div>
+        
+        <div class="price-card featured">
+            <div class="popular-tag">Most Popular</div>
+            <div class="tier">Pro</div>
+            <div class="price">$9.99</div>
+            <div class="period">per month</div>
+            <ul>
+                <li>Everything in Starter</li>
+                <li>Premium AI model (Claude/GPT-4)</li>
+                <li>Priority response time</li>
+                <li>Advanced reasoning</li>
+                <li>Crypto price alerts</li>
+                <li>Daily briefings</li>
+                <li>Priority support</li>
+            </ul>
+            <a href="#start" class="btn-primary" style="width:100%;justify-content:center;">Start Pro Trial</a>
+        </div>
+        
+        <div class="price-card">
+            <div class="tier">Business</div>
+            <div class="price">$29.99</div>
+            <div class="period">per month</div>
+            <ul>
+                <li>Everything in Pro</li>
+                <li>Multi-user support</li>
+                <li>Custom personality</li>
+                <li>24/7 cloud hosting</li>
+                <li>API access</li>
+                <li>White-label option</li>
+                <li>Dedicated support</li>
+            </ul>
+            <a href="#start" class="btn-primary" style="width:100%;justify-content:center;">Contact Sales</a>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+    <div class="section-label">Reviews</div>
+    <h2>People love Atlas</h2>
+    
+    <div class="testimonial-grid">
+        <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <div class="quote">"I replaced ChatGPT Plus with Atlas. It's faster, remembers everything about me, and I'm not paying $20/month anymore. The image generation alone is worth it."</div>
+            <div class="author">Alex K.</div>
+            <div class="role">Freelance Designer</div>
+        </div>
+        <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <div class="quote">"The expense tracker changed my life. I just text 'spent 15 on lunch' and Atlas keeps track. End of month I ask for a summary and boom - instant budget report."</div>
+            <div class="author">Maria S.</div>
+            <div class="role">Marketing Manager</div>
+        </div>
+        <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <div class="quote">"Atlas is the only AI that actually remembers who I am. I told it my wife's birthday once, and it reminded me a week before. No other bot does that."</div>
+            <div class="author">James T.</div>
+            <div class="role">Entrepreneur</div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <div class="section-label">FAQ</div>
+    <h2>Got questions?</h2>
+    
+    <details class="faq-item">
+        <summary>Is Atlas really free?</summary>
+        <p>Yes. The Starter plan is completely free with all 27+ tools. No credit card required, no trial period, no hidden limits. We offer paid plans for users who want premium AI models and advanced features, but the free tier is powerful enough for most people.</p>
+    </details>
+    
+    <details class="faq-item">
+        <summary>How is Atlas different from ChatGPT?</summary>
+        <p>Atlas lives in Telegram (no new app needed), responds 5-10x faster, remembers you permanently across sessions, includes 27+ built-in tools (image gen, crypto, PDF, expenses), and keeps your data 100% private on your own server. ChatGPT does none of this without paid plugins.</p>
+    </details>
+    
+    <details class="faq-item">
+        <summary>Is my data private?</summary>
+        <p>100%. Atlas runs on a dedicated server - your conversations, files, and personal data never touch any cloud service. No data mining, no training on your data, no third-party access. It's your AI, running on your infrastructure.</p>
+    </details>
+    
+    <details class="faq-item">
+        <summary>What languages does Atlas support?</summary>
+        <p>Atlas understands and responds in any language. Voice messages support 50+ languages including English, French, Spanish, German, Ukrainian, Arabic, Chinese, Japanese, and many more.</p>
+    </details>
+    
+    <details class="faq-item">
+        <summary>Can I use Atlas for my business?</summary>
+        <p>Absolutely. The Business plan includes multi-user support, custom personality, white-label options, and API access. Perfect for customer support, team productivity, or as a product feature.</p>
+    </details>
+    
+    <details class="faq-item">
+        <summary>How fast is Atlas?</summary>
+        <p>Atlas responds in 1-2 seconds on average. That's 5-10x faster than ChatGPT, Claude, or Gemini. We use optimized inference servers with aggressive caching to achieve this speed.</p>
+    </details>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-section" id="start">
+    <div class="section-label">Ready?</div>
+    <h2>Start using Atlas today</h2>
+    <p class="section-desc" style="margin: 20px auto 40px;">Join thousands of users who switched to Atlas. 2 seconds. 27 tools. $0.</p>
+    <a href="https://t.me/YourAtlasBot" class="btn-primary" style="font-size: 20px; padding: 20px 48px;">
+        ⚡ Open Atlas on Telegram
+    </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Atlas AI - Built with ❤️ | <a href="#">Privacy Policy</a> | <a href="#">Terms</a> | <a href="mailto:contact@atlasai.com">Contact</a></p>
+    <p style="margin-top: 8px; opacity: 0.5;">© 2026 Atlas AI. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
