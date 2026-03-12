@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Atlas AI</title>
+    <meta name="description" content="Atlas AI Privacy Policy - How we handle your data, what we collect, and how we protect your privacy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--p:#7C3AED;--pl:#A78BFA;--a:#10B981;--al:#34D399;--bg:#09090B;--card:rgba(255,255,255,0.03);--cb:rgba(255,255,255,0.06);--t:#FAFAFA;--m:#71717A}
+        body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;overflow-x:hidden}
+        
+        nav{position:fixed;top:0;width:100%;z-index:100;padding:14px 24px;background:rgba(9,9,11,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--cb)}
+        .nav-i{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:22px;font-weight:800;letter-spacing:-0.5px;text-decoration:none;color:#fff}
+        .logo em{font-style:normal;color:var(--pl)}
+        .nav-l{display:flex;gap:28px;align-items:center}
+        .nav-l a{color:var(--m);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+        .nav-l a:hover{color:#fff}
+        .btn-s{background:var(--p);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px}
+
+        .content{max-width:800px;margin:0 auto;padding:120px 24px 80px}
+        .content h1{font-size:clamp(32px,5vw,48px);font-weight:900;letter-spacing:-2px;margin-bottom:8px}
+        .content .updated{font-size:13px;color:var(--m);margin-bottom:48px}
+        .content .tldr{background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(16,185,129,.08));border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:24px 28px;margin-bottom:48px}
+        .content .tldr h3{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--al)}
+        .content .tldr ul{list-style:none;padding:0}
+        .content .tldr li{padding:4px 0;font-size:14px;color:#D4D4D8;display:flex;align-items:flex-start;gap:8px}
+        .content .tldr li::before{content:'✓';color:var(--a);font-weight:700;flex-shrink:0}
+        .content .tldr li.no::before{content:'✗';color:#EF4444}
+
+        .content h2{font-size:22px;font-weight:800;margin-top:48px;margin-bottom:16px;padding-top:32px;border-top:1px solid var(--cb);letter-spacing:-0.5px}
+        .content h2:first-of-type{border-top:none;padding-top:0}
+        .content h3{font-size:16px;font-weight:700;margin-top:24px;margin-bottom:8px;color:var(--pl)}
+        .content p{color:#A1A1AA;font-size:15px;line-height:1.8;margin-bottom:16px}
+        .content ul{list-style:none;padding:0;margin-bottom:16px}
+        .content li{padding:6px 0;font-size:14px;color:#A1A1AA;display:flex;align-items:flex-start;gap:8px}
+        .content li::before{content:'•';color:var(--pl);font-weight:700;flex-shrink:0}
+        .content strong{color:var(--t)}
+        .content a{color:var(--pl);text-decoration:none}
+        .content a:hover{text-decoration:underline}
+
+        .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:8px;font-size:12px;font-weight:600;color:var(--al);margin-bottom:32px}
+
+        footer{padding:28px 24px;text-align:center;border-top:1px solid var(--cb);font-size:12px;color:var(--m)}
+        footer a{color:var(--pl);text-decoration:none}
+        @media(max-width:768px){.nav-l{display:none}}
+    </style>
+</head>
+<body>
+
+<nav><div class="nav-i">
+    <a href="index.html" class="logo">atlas<em>.ai</em></a>
+    <div class="nav-l">
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="terms.html">Terms</a>
+        <a href="https://buy.stripe.com/test_14AdR9dl32ASg5v4hD7Zu00" class="btn-s">Get Atlas</a>
+    </div>
+</div></nav>
+
+<div class="content">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 12, 2026</p>
+    
+    <div class="badge">🔒 Privacy-first by architecture, not just policy</div>
+
+    <div class="tldr">
+        <h3>TL;DR - The Short Version</h3>
+        <ul>
+            <li>Your messages are processed on a dedicated server - not shared cloud infrastructure</li>
+            <li>We do NOT train AI models on your conversations</li>
+            <li>We do NOT sell, rent, or share your data with advertisers</li>
+            <li>We do NOT store your messages longer than needed to provide the service</li>
+            <li>Your files, notes, expenses, and personal data stay on YOUR server instance</li>
+            <li>You can request deletion of all your data at any time</li>
+            <li class="no">We do NOT use cookies, tracking pixels, or analytics on the bot</li>
+            <li class="no">We do NOT require your email, phone number, or real name</li>
+        </ul>
+    </div>
+
+    <h2>1. Who We Are</h2>
+    <p>Atlas AI ("Atlas", "we", "us", "our") is a personal AI assistant service delivered through the Telegram messaging platform. Atlas is operated as an independent service. When you interact with Atlas via Telegram, you are communicating with our bot application - not with Telegram itself.</p>
+    <p>This Privacy Policy explains how we collect, use, and protect information when you use Atlas AI through Telegram or visit our website at <strong>atlas-ai.com</strong>.</p>
+
+    <h2>2. What We Collect</h2>
+    
+    <h3>Information we receive from Telegram</h3>
+    <p>When you start a conversation with Atlas, Telegram provides us with:</p>
+    <ul>
+        <li>Your Telegram user ID (a numeric identifier)</li>
+        <li>Your first name and username (as set in your Telegram profile)</li>
+        <li>Messages you send directly to the Atlas bot</li>
+    </ul>
+    <p>We do <strong>not</strong> receive your phone number, contacts list, or messages from other chats.</p>
+
+    <h3>Information you provide</h3>
+    <p>As you use Atlas, you may voluntarily share:</p>
+    <ul>
+        <li>Personal preferences (language, timezone, interests)</li>
+        <li>Data entered into tools (expenses, to-do items, notes)</li>
+        <li>Files you send for processing (PDFs, images)</li>
+        <li>URLs you ask Atlas to summarize or search</li>
+    </ul>
+
+    <h3>Information we do NOT collect</h3>
+    <ul>
+        <li>Phone numbers</li>
+        <li>Email addresses (unless you voluntarily share one)</li>
+        <li>Location data or GPS coordinates</li>
+        <li>Messages from your other Telegram chats</li>
+        <li>Contact lists</li>
+        <li>Device identifiers or advertising IDs</li>
+        <li>Browsing history outside of Atlas interactions</li>
+    </ul>
+
+    <h3>Website visitors</h3>
+    <p>Our website (atlas-ai.com) is a static page hosted on GitHub Pages. We do not use cookies, analytics scripts, or tracking pixels. GitHub may collect basic server logs (IP address, browser type) as part of their hosting service - see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's Privacy Statement</a>.</p>
+
+    <h2>3. How We Use Your Data</h2>
+    <p>We use the information we collect exclusively to:</p>
+    <ul>
+        <li><strong>Provide the Atlas service</strong> - processing your messages, running tools, generating responses</li>
+        <li><strong>Maintain persistent memory</strong> - remembering your preferences, name, and context across sessions (this is a core feature)</li>
+        <li><strong>Store your tool data</strong> - expenses, notes, to-do items, and other data you create through Atlas tools</li>
+        <li><strong>Improve service reliability</strong> - monitoring for errors and downtime</li>
+    </ul>
+    <p>We do <strong>not</strong> use your data for:</p>
+    <ul>
+        <li>Training or fine-tuning AI models</li>
+        <li>Targeted advertising</li>
+        <li>Profiling or behavioral analysis</li>
+        <li>Selling to third parties</li>
+    </ul>
+
+    <h2>4. AI Processing</h2>
+    <p>Atlas uses third-party AI language models to generate responses. When you send a message, the text of your conversation may be sent to one or more of these AI providers for processing:</p>
+    <ul>
+        <li>Cerebras</li>
+        <li>Groq</li>
+        <li>Mistral AI</li>
+        <li>SambaNova</li>
+        <li>Google (Gemini)</li>
+    </ul>
+    <p>These providers process your message to generate a response and are bound by their own privacy policies. We select providers that <strong>do not train on user inputs</strong> via their API services. Your messages are sent for inference only and are not retained by these providers for model training.</p>
+    <p>We do not send your entire conversation history with every request - only the relevant context needed to generate a useful response.</p>
+
+    <h2>5. Data Storage and Security</h2>
+    <p>Your data is stored on a dedicated server instance. This means:</p>
+    <ul>
+        <li>Your conversations and files are <strong>not mixed with other users' data</strong></li>
+        <li>Access to your data is restricted to the Atlas service running on your instance</li>
+        <li>Data is stored locally on the server, not in a shared cloud database</li>
+        <li>The server communicates with Telegram over encrypted HTTPS connections</li>
+    </ul>
+    <p>While we implement reasonable security measures, no system is 100% secure. We encourage you not to share sensitive credentials (passwords, financial account numbers) with any AI assistant, including Atlas.</p>
+
+    <h2>6. Data Retention</h2>
+    <ul>
+        <li><strong>Conversation memory:</strong> Retained as long as you use Atlas, to provide the persistent memory feature. You can ask Atlas to forget specific information at any time.</li>
+        <li><strong>Tool data</strong> (expenses, notes, to-dos): Retained until you delete them or request account deletion.</li>
+        <li><strong>Generated files</strong> (images, PDFs, QR codes): Stored on the server until deleted. Not backed up externally.</li>
+        <li><strong>Server logs:</strong> Retained for up to 30 days for debugging purposes, then automatically deleted.</li>
+    </ul>
+
+    <h2>7. Your Rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+        <li><strong>Access</strong> - Ask Atlas what data it has about you</li>
+        <li><strong>Correction</strong> - Ask Atlas to update incorrect information in its memory</li>
+        <li><strong>Deletion</strong> - Request complete deletion of all your data, including conversation history, memory, and tool data</li>
+        <li><strong>Portability</strong> - Request an export of your data in a readable format</li>
+        <li><strong>Objection</strong> - Object to any processing you disagree with</li>
+    </ul>
+    <p>To exercise any of these rights, simply message Atlas with your request, or contact us at <a href="mailto:hello@atlas-ai.com">hello@atlas-ai.com</a>.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>Atlas is not intended for use by anyone under the age of 16. We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us and we will promptly delete it.</p>
+
+    <h2>9. Third-Party Links</h2>
+    <p>Atlas may provide links to external websites when performing web searches or URL summaries. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies independently.</p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If we make significant changes, we will notify users through the Atlas bot. The "Last updated" date at the top of this page indicates when the policy was last revised.</p>
+
+    <h2>11. Contact Us</h2>
+    <p>If you have questions about this Privacy Policy or your data:</p>
+    <ul>
+        <li>Message Atlas directly on Telegram</li>
+        <li>Email: <a href="mailto:hello@atlas-ai.com">hello@atlas-ai.com</a></li>
+    </ul>
+    <p style="margin-top:32px;padding:20px;background:var(--card);border:1px solid var(--cb);border-radius:12px;font-size:13px;text-align:center">
+        <strong>Our philosophy:</strong> Your data exists to serve you, not us. If we don't need it, we don't collect it. If you want it gone, it's gone.
+    </p>
+</div>
+
+<footer>
+    <p style="margin-bottom:4px"><strong>atlas<span style="color:var(--pl)">.ai</span></strong></p>
+    <p><a href="index.html">Home</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a> | <a href="mailto:hello@atlas-ai.com">Contact</a></p>
+    <p style="margin-top:6px;opacity:.4">&copy; 2026 Atlas AI. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
