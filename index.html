@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas AI - Your Personal AI Assistant on Telegram</title>
-    <meta name="description" content="Atlas AI - The most powerful AI assistant on Telegram. 32+ tools, 2-second responses, image generation, voice, crypto, web search, daily briefings. Replaces your $20/mo ChatGPT subscription.">
-    <meta property="og:title" content="Atlas AI - Stop Paying $20/mo for ChatGPT">
-    <meta property="og:description" content="32+ tools. 2-second responses. Lives in Telegram. Saves you $240/year.">
+    <title>Atlas AI V2 - Your Personal AI Assistant on Telegram</title>
+    <meta name="description" content="Atlas AI V2 - The most powerful AI assistant on Telegram. Powered by Gemini 2.5 Pro. 32+ tools, 2-second responses, self-healing infrastructure, image generation, voice, crypto, web search, daily briefings. Replaces your $20/mo ChatGPT subscription.">
+    <meta property="og:title" content="Atlas AI V2 - Stop Paying $20/mo for ChatGPT">
+    <meta property="og:description" content="Powered by Gemini 2.5 Pro. 32+ tools. Self-healing AI. 99.9% uptime. Lives in Telegram.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -25,6 +25,7 @@
         .nav-i{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
         .logo{font-size:22px;font-weight:800;letter-spacing:-0.5px}
         .logo em{font-style:normal;color:var(--pl)}
+        .logo .v2-tag{font-size:10px;font-weight:700;background:linear-gradient(135deg,var(--p),var(--a));color:#fff;padding:2px 7px;border-radius:6px;margin-left:6px;vertical-align:super;letter-spacing:0.5px}
         .nav-l{display:flex;gap:28px;align-items:center}
         .nav-l a{color:var(--m);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
         .nav-l a:hover{color:#fff}
@@ -37,6 +38,10 @@
         .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 16px 6px 8px;border-radius:100px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);font-size:13px;font-weight:600;color:#FCA5A5;margin-bottom:28px}
         .pill-dot{width:8px;height:8px;border-radius:50%;background:#EF4444;animation:pulse 2s infinite}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+        
+        .gemini-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:linear-gradient(135deg,rgba(66,133,244,0.12),rgba(52,211,153,0.12));border:1px solid rgba(66,133,244,0.25);font-size:13px;font-weight:600;color:#93C5FD;margin-bottom:20px}
+        .gemini-badge .gemini-icon{font-size:16px}
+        .gemini-badge strong{color:var(--al)}
         
         h1{font-size:clamp(40px,7vw,78px);font-weight:900;line-height:1.0;max-width:850px;margin-bottom:20px;letter-spacing:-3px}
         h1 .gr{background:linear-gradient(135deg,#A78BFA,#34D399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -73,7 +78,18 @@
         .sh h2{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-2px;margin-bottom:12px}
         .sh p{color:var(--m);font-size:17px;max-width:550px;margin:0 auto}
         
-        /* BENEFIT BLOCKS (not features - benefits!) */
+        /* WHAT'S NEW V2 BANNER */
+        .v2-section{padding:80px 0}
+        .v2-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:40px}
+        .v2-card{background:var(--card);border:1px solid var(--cb);border-radius:20px;padding:28px;transition:all .3s;position:relative;overflow:hidden}
+        .v2-card:hover{border-color:rgba(124,58,237,.3);transform:translateY(-3px)}
+        .v2-card .v2-icon{font-size:28px;margin-bottom:14px;display:block}
+        .v2-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+        .v2-card p{color:var(--m);font-size:14px;line-height:1.6}
+        .v2-card.featured{border-color:rgba(124,58,237,.25);background:linear-gradient(135deg,rgba(124,58,237,.06),rgba(16,185,129,.04))}
+        .v2-new-tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(16,185,129,.2));color:var(--al);margin-top:12px}
+        
+        /* BENEFIT BLOCKS */
         .benefits{padding:80px 0}
         .benefit-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px}
         .benefit-row.reverse{direction:rtl}
@@ -92,11 +108,11 @@
         .bc:hover{border-color:rgba(124,58,237,.3);transform:translateY(-3px)}
         .bc.s2{grid-column:span 2}
         .bc-i{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
-        .bgp{background:rgba(124,58,237,.15)}.bgg{background:rgba(16,185,129,.15)}.bgb{background:rgba(59,130,246,.15)}.bgo{background:rgba(245,158,11,.15)}.bgk{background:rgba(236,72,153,.15)}
+        .bgp{background:rgba(124,58,237,.15)}.bgg{background:rgba(16,185,129,.15)}.bgb{background:rgba(59,130,246,.15)}.bgo{background:rgba(245,158,11,.15)}.bgk{background:rgba(236,72,153,.15)}.bgr{background:rgba(239,68,68,.15)}
         .bc h3{font-size:18px;font-weight:700;margin-bottom:6px}
         .bc p{color:var(--m);font-size:13px;line-height:1.6}
         .bt{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:12px}
-        .bt-f{background:rgba(16,185,129,.15);color:var(--al)}.bt-s{background:rgba(245,158,11,.15);color:#FBBF24}.bt-n{background:rgba(236,72,153,.15);color:#F472B6}
+        .bt-f{background:rgba(16,185,129,.15);color:var(--al)}.bt-s{background:rgba(245,158,11,.15);color:#FBBF24}.bt-n{background:rgba(236,72,153,.15);color:#F472B6}.bt-v2{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(16,185,129,.2));color:var(--al)}
         
         /* PHONE MOCKUP */
         .phone{background:#1A1A2E;border-radius:24px;padding:16px;border:1px solid rgba(255,255,255,.1)}
@@ -115,6 +131,7 @@
         .sb{height:26px;border-radius:8px;display:flex;align-items:center;padding-left:12px;font-weight:700;font-size:11px}
         .sb-s{background:rgba(255,255,255,.05);color:var(--m)}
         .sb-a{background:linear-gradient(90deg,var(--a),#34D399);color:#fff}
+        .speed-note{font-size:11px;color:var(--pl);margin-top:12px;font-weight:500}
         
         /* TOOLS GRID */
         .tools{padding:80px 0}
@@ -122,6 +139,8 @@
         .tc{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--cb);border-radius:10px;font-size:13px;font-weight:500;transition:all .2s}
         .tc:hover{border-color:var(--p);background:rgba(124,58,237,.05)}
         .tc .ic{font-size:18px}
+        .tc.tc-new{border-color:rgba(16,185,129,.2);background:rgba(16,185,129,.03)}
+        .tc.tc-new::after{content:'NEW';font-size:8px;font-weight:700;color:var(--al);background:rgba(16,185,129,.15);padding:2px 5px;border-radius:4px;margin-left:auto}
         
         /* COMPARISON */
         .comp{padding:80px 0}
@@ -151,6 +170,8 @@
         .plan ul{list-style:none;margin-bottom:24px}
         .plan li{padding:6px 0;font-size:13px;color:var(--m);display:flex;align-items:center;gap:8px}
         .plan li::before{content:'✓';color:var(--a);font-weight:700;font-size:12px}
+        .plan li.new-feature{color:var(--t)}
+        .plan li.new-feature::before{content:'★';color:var(--pl)}
         
         /* REVIEWS */
         .reviews{padding:80px 0}
@@ -189,6 +210,8 @@
             table{font-size:11px}th,td{padding:8px 6px}
             .pg{grid-template-columns:1fr}
             .hero-btns{flex-direction:column;align-items:center}
+            .v2-grid{grid-template-columns:1fr}
+            .gemini-badge{font-size:12px;padding:6px 14px}
         }
     </style>
 </head>
@@ -196,8 +219,9 @@
 
 <!-- NAV -->
 <nav><div class="nav-i">
-    <div class="logo">atlas<em>.ai</em></div>
+    <div class="logo">atlas<em>.ai</em> <span class="v2-tag">V2</span></div>
     <div class="nav-l">
+        <a href="#whats-new">What's New</a>
         <a href="#features">Features</a>
         <a href="#tools">Tools</a>
         <a href="#compare">Compare</a>
@@ -213,15 +237,19 @@
     
     <div class="pill"><span class="pill-dot"></span> Limited early access - Launch pricing ending soon</div>
     
+    <div class="gemini-badge">
+        <span class="gemini-icon">🧠</span> Powered by <strong>&nbsp;Gemini 2.5 Pro</strong>&nbsp; — the same brain behind $200/mo AI services
+    </div>
+    
     <h1>Stop paying $20/mo<br>for <span class="gr">slow AI</span></h1>
     
-    <p class="hero-sub">Atlas is the AI assistant that lives in your Telegram. Faster than ChatGPT, smarter than basic bots, and packed with 32+ tools including web search, daily briefings, and real-time crypto. Half the price.</p>
+    <p class="hero-sub">Atlas is the AI assistant that lives in your Telegram. Powered by Gemini 2.5 Pro for elite reasoning, with self-healing infrastructure and 32+ tools including web search, daily briefings, and real-time crypto. Half the price, zero downtime.</p>
     
     <p class="hero-savings">Save <span>$240/year</span> vs ChatGPT Plus - Atlas does more, for less</p>
     
     <div class="hero-btns">
-        <a href="#pricing" class="btn btn-p">⚡ Get Atlas - From $9.99/mo</a>
-        <a href="#features" class="btn btn-g">See all 32+ tools</a>
+        <a href="#pricing" class="btn btn-p">⚡ Get Atlas V2 - From $9.99/mo</a>
+        <a href="#whats-new" class="btn btn-g">See what's new in V2</a>
     </div>
     
     <div class="trust">
@@ -229,6 +257,7 @@
         <div class="trust-item"><span class="ic">✓</span> No install needed</div>
         <div class="trust-item"><span class="ic">✓</span> Works in Telegram</div>
         <div class="trust-item"><span class="ic">🔒</span> 100% private</div>
+        <div class="trust-item"><span class="ic">🩺</span> Self-healing AI</div>
     </div>
     
     <div class="countdown-bar">
@@ -242,8 +271,57 @@
     <div class="stat"><div class="stat-n">1.8s</div><div class="stat-l">Avg Response</div></div>
     <div class="stat"><div class="stat-n">32+</div><div class="stat-l">Built-in Tools</div></div>
     <div class="stat"><div class="stat-n">$240</div><div class="stat-l">Saved Per Year</div></div>
-    <div class="stat"><div class="stat-n">70+</div><div class="stat-l">Languages</div></div>
     <div class="stat"><div class="stat-n">99.9%</div><div class="stat-l">Uptime</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">AI Providers</div></div>
+    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Self-Healing Modules</div></div>
+</div>
+
+<!-- WHAT'S NEW IN V2 -->
+<div class="ctn v2-section" id="whats-new">
+    <div class="sh">
+        <div class="sh-label">What's New</div>
+        <h2>Meet Atlas V2</h2>
+        <p>Smarter brain. Unbreakable infrastructure. The AI assistant that fixes itself.</p>
+    </div>
+    
+    <div class="v2-grid">
+        <div class="v2-card featured">
+            <span class="v2-icon">🧠</span>
+            <h3>Gemini 2.5 Pro Brain</h3>
+            <p>Powered by Google's most advanced reasoning model. The same caliber of intelligence that powers $200/month AI services - you get it for a fraction of the price. Deep analysis, creative writing, complex problem-solving - all at your fingertips.</p>
+            <span class="v2-new-tag">V2 Upgrade</span>
+        </div>
+        <div class="v2-card featured">
+            <span class="v2-icon">🩺</span>
+            <h3>Self-Healing AI</h3>
+            <p>Atlas monitors its own health around the clock and automatically fixes issues before they reach you. No downtime, no manual maintenance, no waiting for someone to notice a problem. It just works.</p>
+            <span class="v2-new-tag">V2 Upgrade</span>
+        </div>
+        <div class="v2-card">
+            <span class="v2-icon">🔄</span>
+            <h3>5-Provider Auto-Failover</h3>
+            <p>If one AI provider goes down, Atlas instantly switches to the next. Five providers running in parallel means you never experience an outage - even when the big platforms stumble.</p>
+            <span class="v2-new-tag">V2 Upgrade</span>
+        </div>
+        <div class="v2-card">
+            <span class="v2-icon">🔍</span>
+            <h3>Auto-Diagnostics</h3>
+            <p>Atlas reads its own logs, detects provider failures, and self-repairs without human intervention. 7 monitoring modules running 24/7 keeping everything in perfect shape.</p>
+            <span class="v2-new-tag">V2 Upgrade</span>
+        </div>
+        <div class="v2-card">
+            <span class="v2-icon">⚡</span>
+            <h3>Smart Error Recovery</h3>
+            <p>When something unexpected happens, Atlas doesn't crash or show you an error message. It quietly recovers, reroutes, and delivers your answer like nothing happened.</p>
+            <span class="v2-new-tag">V2 Upgrade</span>
+        </div>
+        <div class="v2-card">
+            <span class="v2-icon">🛡️</span>
+            <h3>99.9% Uptime Guarantee</h3>
+            <p>With self-healing infrastructure and multi-provider failover, Atlas achieves 99.9% uptime. Your AI assistant is always there when you need it - morning, evening, weekend, holiday.</p>
+            <span class="v2-new-tag">V2 Upgrade</span>
+        </div>
+    </div>
 </div>
 
 <!-- BENEFIT 1: SPEED -->
@@ -306,6 +384,21 @@
             <div class="benefit-img-overlay">Your conversations belong to you - not Silicon Valley</div>
         </div>
     </div>
+
+    <!-- BENEFIT 5: SELF-HEALING (NEW V2) -->
+    <div class="benefit-row">
+        <div class="benefit-content">
+            <div class="tag">Self-Healing Infrastructure</div>
+            <h3>An AI that takes care of itself</h3>
+            <p>Most AI services go down and you wait. Atlas V2 is different. With 5 AI providers and 7 automated monitoring modules running around the clock, Atlas detects problems and fixes them before you ever notice.</p>
+            <p>Provider goes down? Atlas switches to the next one in milliseconds. Error detected? Auto-diagnostics kick in and self-repair. You just keep chatting.</p>
+            <div class="benefit-stat">🩺 99.9% uptime with zero maintenance</div>
+        </div>
+        <div class="benefit-img">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Server infrastructure">
+            <div class="benefit-img-overlay">7 self-healing modules running 24/7</div>
+        </div>
+    </div>
 </div>
 
 <!-- BENTO FEATURES -->
@@ -320,13 +413,14 @@
         <div class="bc s2">
             <div class="bc-i bgg">⚡</div>
             <h3>Response time comparison</h3>
-            <p>Real benchmarks. Not marketing.</p>
+            <p>Real benchmarks. Not marketing. Powered by Gemini 2.5 Pro.</p>
             <div class="speed-bars">
                 <div class="sr"><span class="sl">ChatGPT</span><div class="sb sb-s" style="width:85%">8-15 seconds</div></div>
                 <div class="sr"><span class="sl">Claude</span><div class="sb sb-s" style="width:65%">5-12 seconds</div></div>
                 <div class="sr"><span class="sl">Gemini</span><div class="sb sb-s" style="width:45%">3-8 seconds</div></div>
-                <div class="sr"><span class="sl" style="color:var(--a);font-weight:700">Atlas</span><div class="sb sb-a" style="width:18%">1-2s</div></div>
+                <div class="sr"><span class="sl" style="color:var(--a);font-weight:700">Atlas V2</span><div class="sb sb-a" style="width:18%">1-2s</div></div>
             </div>
+            <div class="speed-note">✦ Powered by Gemini 2.5 Pro — elite reasoning at lightning speed</div>
         </div>
         
         <div class="bc">
@@ -347,6 +441,8 @@
         <div class="bc"><div class="bc-i bgo">💰</div><h3>Crypto Tracker</h3><p>Real-time prices for 1000+ coins. Set alerts. Never miss a pump.</p><span class="bt bt-s">Real-time</span></div>
         <div class="bc s2"><div class="bc-i bgp">🌐</div><h3>Full Chrome browser built in</h3><p>Atlas browses the web for you. Research anything, fill forms, take screenshots, extract data from any website. Not a preview - real Chrome with full capability.</p><span class="bt bt-n">Powerful</span></div>
         <div class="bc"><div class="bc-i bgg">💸</div><h3>Expense Tracker</h3><p>"Spent 50 on groceries" - instant logging with monthly summaries by category.</p><span class="bt bt-f">Built-in</span></div>
+        <div class="bc"><div class="bc-i bgr">🩺</div><h3>Self-Healing AI</h3><p>Atlas monitors its own health 24/7 and auto-fixes issues. 7 self-healing modules, 5 AI providers, zero downtime.</p><span class="bt bt-v2">New in V2</span></div>
+        <div class="bc"><div class="bc-i bgb">🔍</div><h3>Auto-Diagnostics</h3><p>Reads its own logs, detects provider failures, and self-repairs without human intervention. Always running, always watching.</p><span class="bt bt-v2">New in V2</span></div>
     </div>
 </div>
 
@@ -390,6 +486,8 @@
         <div class="tc"><span class="ic">📑</span>Summarization</div>
         <div class="tc"><span class="ic">🎓</span>Knowledge Q&A</div>
         <div class="tc"><span class="ic">🔄</span>6 AI Fallbacks</div>
+        <div class="tc tc-new"><span class="ic">🩺</span>Self-Healing</div>
+        <div class="tc tc-new"><span class="ic">🔍</span>Auto-Diagnostics</div>
     </div>
 </div>
 
@@ -401,10 +499,11 @@
         <p>We did the homework. Here's the truth.</p>
     </div>
     <table>
-        <thead><tr><th></th><th>ChatGPT Plus</th><th>Claude Pro</th><th>Gemini</th><th class="ah">Atlas AI</th></tr></thead>
+        <thead><tr><th></th><th>ChatGPT Plus</th><th>Claude Pro</th><th>Gemini</th><th class="ah">Atlas AI V2</th></tr></thead>
         <tbody>
             <tr><td>Monthly price</td><td>$20/mo</td><td>$20/mo</td><td>$20/mo</td><td class="ac">From $9.99/mo</td></tr>
             <tr><td>Response speed</td><td>8-15s</td><td>5-12s</td><td>3-8s</td><td class="ac">1-2s</td></tr>
+            <tr><td>AI model quality</td><td class="cy">GPT-4</td><td class="cy">Claude</td><td class="cy">Gemini</td><td class="ac">Gemini 2.5 Pro</td></tr>
             <tr><td>Persistent memory</td><td class="cp">Limited</td><td class="cn2">Per session</td><td class="cp">Limited</td><td class="cy">✓ Permanent</td></tr>
             <tr><td>Image generation</td><td class="cp">Paid only</td><td class="cn2">✗</td><td class="cp">Paid only</td><td class="cy">✓ Unlimited</td></tr>
             <tr><td>Voice messages</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cy">✓ 70+ Languages</td></tr>
@@ -421,8 +520,9 @@
             <tr><td>Weather forecast</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cy">✓ 3-day</td></tr>
             <tr><td>Auto language detect</td><td class="cp">Manual</td><td class="cp">Manual</td><td class="cp">Manual</td><td class="cy">✓ Automatic</td></tr>
             <tr><td>AI video generation</td><td class="cp">Paid (Sora)</td><td class="cn2">✗</td><td class="cp">Paid (Veo)</td><td class="cy">✓ Business plan</td></tr>
-            <tr><td>AI model quality</td><td class="cy">GPT-4</td><td class="cy">Claude</td><td class="cy">Gemini</td><td class="cy">GPT-4 class (Business)</td></tr>
-            <tr><td>AI failover (uptime)</td><td class="cn2">1 model</td><td class="cn2">1 model</td><td class="cn2">1 model</td><td class="cy">✓ 6 models</td></tr>
+            <tr><td>Self-healing AI</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="ac">✓ 7 modules 24/7</td></tr>
+            <tr><td>AI failover (uptime)</td><td class="cn2">1 model</td><td class="cn2">1 model</td><td class="cn2">1 model</td><td class="ac">✓ 5 providers</td></tr>
+            <tr><td>Auto-diagnostics</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="ac">✓ Auto-repair</td></tr>
             <tr><td>Works in Telegram</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cn2">✗</td><td class="cy">✓ Native</td></tr>
         </tbody>
     </table>
@@ -432,8 +532,8 @@
 <div class="ctn">
     <div class="guarantee">
         <div class="guarantee-icon">💎</div>
-        <h3>More tools than ChatGPT. Half the price.</h3>
-        <p>ChatGPT Plus charges $20/mo for chat and images. Atlas gives you 32+ tools, persistent memory, and 1-2 second responses - starting at $9.99/mo. Save more when you commit longer.</p>
+        <h3>More tools than ChatGPT. Half the price. Zero downtime.</h3>
+        <p>ChatGPT Plus charges $20/mo for chat and images. Atlas V2 gives you 32+ tools, Gemini 2.5 Pro intelligence, self-healing infrastructure, and 1-2 second responses - starting at $9.99/mo.</p>
     </div>
 </div>
 
@@ -453,6 +553,7 @@
             <ul>
                 <li>All 32+ tools included</li>
                 <li>Unlimited messages</li>
+                <li class="new-feature">Powered by Gemini 2.5 Pro</li>
                 <li>Persistent memory across all sessions</li>
                 <li>2-second response time</li>
                 <li>Image generation</li>
@@ -463,6 +564,8 @@
                 <li>Expense tracker, to-do, notes</li>
                 <li>PDF tools, QR codes, passwords</li>
                 <li>Smart reminders</li>
+                <li class="new-feature">Self-healing AI with 99.9% uptime</li>
+                <li class="new-feature">5-provider auto-failover</li>
                 <li>Email support</li>
             </ul>
             <a href="https://buy.stripe.com/test_14AdR9dl32ASg5v4hD7Zu00" class="btn btn-p" style="width:100%;justify-content:center">Get Pro - $9.99/mo</a>
@@ -580,7 +683,9 @@
     <div class="sh"><div class="sh-label">FAQ</div><h2>Questions? Answers.</h2></div>
     
     <details><summary>Why is Atlas cheaper than ChatGPT?</summary><p>ChatGPT charges $20/mo for chat and image generation. Atlas starts at $9.99/mo and includes 32+ tools - image generation, web search, crypto tracking, expense management, voice messages, and more. We keep costs low by using optimized AI infrastructure and passing the savings to you. Save even more with quarterly or annual billing - as low as $5.83/mo.</p></details>
-    <details><summary>How is Atlas different from ChatGPT?</summary><p>Three big differences: (1) Atlas lives in Telegram - no new app, no website, no login. (2) It responds 5-10x faster at 1-2 seconds. (3) It includes 32+ built-in tools like web search, daily briefings, URL summarizer, image generation, crypto tracking, expense management, voice messages, and persistent memory - features that cost $20+/month elsewhere or don't exist at all. Plus Atlas has 6 AI model fallbacks for near-100% uptime.</p></details>
+    <details><summary>How is Atlas different from ChatGPT?</summary><p>Three big differences: (1) Atlas lives in Telegram - no new app, no website, no login. (2) It responds 5-10x faster at 1-2 seconds. (3) It includes 32+ built-in tools like web search, daily briefings, URL summarizer, image generation, crypto tracking, expense management, voice messages, and persistent memory - features that cost $20+/month elsewhere or don't exist at all. Plus Atlas V2 is powered by Gemini 2.5 Pro and has self-healing infrastructure with 5 AI provider failover for 99.9% uptime.</p></details>
+    <details><summary>What is Gemini 2.5 Pro?</summary><p>Gemini 2.5 Pro is Google's most advanced reasoning model - the same caliber of AI intelligence that powers $200/month premium AI services. Atlas V2 uses it as its core brain, giving you elite-level reasoning, deep analysis, and creative problem-solving at a fraction of the price. You get the best AI available, without the premium price tag.</p></details>
+    <details><summary>What happens if an AI provider goes down?</summary><p>Nothing - you won't even notice. Atlas uses 5 different AI providers with automatic failover. If one goes down, Atlas switches to the next in milliseconds. Our self-healing system checks all providers every 30 minutes and auto-repairs any issues before they affect you. That's how we maintain 99.9% uptime.</p></details>
     <details><summary>Is my data actually private?</summary><p>Yes, and we can prove it architecturally. Atlas runs on a dedicated server - not OpenAI's cloud, not Google's cloud. Your messages and files are stored only on the server you connect to. Nobody else can access them. We don't train on your data. We physically can't - we don't have it.</p></details>
     <details><summary>What languages does it support?</summary><p>Atlas understands and responds in virtually any language. Voice messages support 70+ languages including English, French, Spanish, German, Ukrainian, Arabic, Chinese (Mandarin and Cantonese), Japanese, Korean, Portuguese, Hindi, Russian, Italian, Dutch, Polish, Turkish, Swedish, Norwegian, Danish, Finnish, Czech, Romanian, Hungarian, Thai, Vietnamese, Indonesian, Malay, Tamil, Telugu, Bengali, Gujarati, Marathi, Urdu, Swahili, Afrikaans, Filipino, Greek, Hebrew, Persian, and many more. If it's a language, Atlas probably speaks it.</p></details>
     <details><summary>Can I use this for my business or team?</summary><p>Absolutely. Our Business plan supports up to 10 users, each with separate memory and context. It includes custom bot personality, white-label branding, and API access. Perfect for customer support, internal productivity, or embedding AI into your product.</p></details>
@@ -592,14 +697,14 @@
 <div class="cta" id="start">
     <div class="cta-g"></div>
     <h2>Ready to drop the $20/mo habit?</h2>
-    <p>Join people who switched to faster, smarter, cheaper AI.</p>
-    <a href="#pricing" class="btn btn-p" style="font-size:17px;padding:18px 44px;position:relative">⚡ Get Atlas - From $9.99/mo</a>
-    <p style="margin-top:16px;font-size:13px;color:var(--m);position:relative">Cancel anytime. No install. Just Telegram.</p>
+    <p>Join people who switched to faster, smarter, self-healing AI.</p>
+    <a href="#pricing" class="btn btn-p" style="font-size:17px;padding:18px 44px;position:relative">⚡ Get Atlas V2 - From $9.99/mo</a>
+    <p style="margin-top:16px;font-size:13px;color:var(--m);position:relative">Powered by Gemini 2.5 Pro. Cancel anytime. No install. Just Telegram.</p>
 </div>
 
 <!-- FOOTER -->
 <footer>
-    <p style="margin-bottom:4px"><strong>atlas<span style="color:var(--pl)">.ai</span></strong></p>
+    <p style="margin-bottom:4px"><strong>atlas<span style="color:var(--pl)">.ai</span></strong> <span style="font-size:10px;color:var(--pl);font-weight:600">V2</span></p>
     <p>Built for people who hate slow AI. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a> | <a href="mailto:hello@atlas-ai.com">Contact</a></p>
     <p style="margin-top:6px;opacity:.4">&copy; 2026 Atlas AI. All rights reserved.</p>
 </footer>
